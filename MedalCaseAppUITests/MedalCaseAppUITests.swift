@@ -10,34 +10,29 @@ import XCTest
 final class MedalCaseAppUITests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        // Setup before each test
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // Cleanup after each test
     }
 
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testViewAchievementsButtonTapped() throws {
+        // Launch the application
         let app = XCUIApplication()
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+        // Assert the LandingView is displayed
+        XCTAssertTrue(app.staticTexts["Welcome to your ASICS Runkeeper Medal Case"].exists, "The welcome text should be visible on the LandingView.")
+        XCTAssertTrue(app.buttons["View Achievements"].exists, "The 'View Achievements' button should be visible.")
 
-    @MainActor
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+        // Tap the "View Achievements" button
+        let viewAchievementsButton = app.buttons["View Achievements"]
+        viewAchievementsButton.tap()
+
+        // Assert that the AchievementsView is displayed
+        XCTAssertTrue(app.navigationBars["Achievements"].exists, "The 'Achievements' navigation bar should be visible after tapping 'View Achievements'.")
     }
 }

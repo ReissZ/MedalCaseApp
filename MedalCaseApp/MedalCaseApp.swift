@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct MedalCaseAppApp: App {
+struct MedalCaseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LandingView()
         }
     }
 }
