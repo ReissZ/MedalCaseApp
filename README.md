@@ -35,6 +35,7 @@ A SwiftUI app to track achievements and progress in personal records and virtual
    - Information based on completion status
 
 3. **Ellipsis Menu**
+   - Search Medals
    - Share summary
    - Reset progress
    - Developer info
