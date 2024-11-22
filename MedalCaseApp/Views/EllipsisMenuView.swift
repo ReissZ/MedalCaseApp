@@ -10,6 +10,7 @@ import SwiftUI
 struct EllipsisMenuView: View {
     @Binding var showResetConfirmation: Bool
     @Binding var showAboutDeveloper: Bool
+    @Binding var showSearchBar: Bool // New binding to toggle the search bar
 
     let personalRecordsCount: Int
     let totalPersonalRecords: Int
@@ -18,6 +19,12 @@ struct EllipsisMenuView: View {
 
     var body: some View {
         Menu {
+            // Toggle Search Bar
+            Button(action: {
+                showSearchBar.toggle()
+            }) {
+                Label(showSearchBar ? "Hide Search" : "Search Medals", systemImage: "magnifyingglass")
+            }
             // Share Achievements Option
             Button(action: {
                 shareAchievements()
@@ -59,21 +66,16 @@ struct EllipsisMenuView: View {
             windowScene.keyWindow?.rootViewController?.present(activityController, animated: true, completion: nil)
         }
     }
-
-    func resetProgress() {
-        print("Progress reset successfully!")
-    }
 }
 
 #Preview {
     EllipsisMenuView(
         showResetConfirmation: .constant(false),
         showAboutDeveloper: .constant(false),
+        showSearchBar: .constant(false),
         personalRecordsCount: 5,
         totalPersonalRecords: 6,
         virtualRacesCount: 3,
         totalVirtualRaces: 7
     )
 }
-
-
