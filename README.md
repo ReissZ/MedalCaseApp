@@ -84,19 +84,9 @@ A SwiftUI app to track achievements and progress in personal records and virtual
 
 ---
 
-## 📸 Screenshots
-
-| Landing View | Achievements View | Medal Details View |
-|--------------|-------------------|--------------------|
-| ![Landing View](path/to/landing_view.png) | ![Achievements View](path/to/achievements_view.png) | ![Medal Details View](path/to/medal_details_view.png) |
-
-*Replace `path/to/...` with actual image paths.*
-
----
-
 ## 🛡️ License
 
-[MIT License](LICENSE)
+[ASICS License](LICENSE)
 
 ---
 
@@ -114,7 +104,6 @@ Feel free to reach out for questions or feedback!
 
 ## 🌟 Future Enhancements
 
-- Search and filter medals
 - Detailed medal progress tracking
 - Toggle between grid and list views
 - Integrate Core Data for persistence
