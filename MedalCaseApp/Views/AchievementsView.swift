@@ -2,8 +2,6 @@
 //  AchievementsView.swift
 //  MedalCaseApp
 //
-//  Created by Reiss Zurbyk on 2024-11-22.
-//
 
 import SwiftUI
 
@@ -12,7 +10,7 @@ struct AchievementsView: View {
     @State private var showResetConfirmation = false
     @State private var showAboutDeveloper = false
     @State private var searchText = ""
-    @State private var showSearchBar = false // New state to toggle the search bar
+    @State private var showSearchBar = false
 
     var personalRecords: [Medal] = Medal.personalRecords
     var virtualRaces: [Medal] = Medal.virtualRaces
@@ -35,15 +33,12 @@ struct AchievementsView: View {
     var body: some View {
         ZStack {
             VStack {
-                // Conditionally show the search bar
                 if showSearchBar {
                     SearchBarView(text: $searchText)
                 }
 
-                // Medal Sections
                 ScrollView {
                     VStack(spacing: 16) {
-                        // Personal Records Section
                         SectionView(
                             title: "Personal Records",
                             items: filteredPersonalRecords,
@@ -51,7 +46,6 @@ struct AchievementsView: View {
                             totalCount: personalRecords.count
                         )
 
-                        // Virtual Races Section
                         SectionView(
                             title: "Virtual Races",
                             items: filteredVirtualRaces,
@@ -99,6 +93,14 @@ struct AchievementsView: View {
         }
         .sheet(isPresented: $showAboutDeveloper) {
             AboutDeveloperView()
+        }
+        .alert("Reset Progress", isPresented: $showResetConfirmation) {
+            Button("Cancel", role: .cancel) {}
+            Button("Reset", role: .destructive) {
+                viewModel.resetProgress()
+            }
+        } message: {
+            Text("This will clear all your progress. Are you sure?")
         }
     }
 }

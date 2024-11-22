@@ -2,10 +2,8 @@
 //  AchievementsViewModel.swift
 //  MedalCaseApp
 //
-//  Created by Reiss Zurbyk on 2024-11-22.
-//
 
-import Foundation
+import SwiftUI
 
 class AchievementsViewModel: ObservableObject {
     @Published var showSnackBar = false
